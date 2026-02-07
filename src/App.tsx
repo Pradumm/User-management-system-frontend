@@ -67,17 +67,15 @@ const App: React.FC = () => {
   };
 
   const handleSubmit = async (values: UserFormData) => {
-    try {
-      if (editingUser) {
-        await userApi.updateUser(editingUser._id, values);
-      } else {
-        await userApi.createUser(values);
-      }
-      fetchUsers(pagination.page, pagination.limit, debouncedSearch);
-    } catch (error: any) {
-      message.error(error?.response?.data?.message || 'Operation failed');
+    if (editingUser) {
+      await userApi.updateUser(editingUser._id, values);
+    } else {
+      await userApi.createUser(values);
     }
+    fetchUsers(pagination.page, pagination.limit, debouncedSearch);
   };
+
+
 
   const handleModalClose = () => {
     setModalVisible(false);
