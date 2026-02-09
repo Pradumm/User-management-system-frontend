@@ -2,7 +2,7 @@ import type { AssessmentLog, EventType } from "../types/types";
 
 
 const STORAGE_KEY = 'secure_test_logs';
-const BACKEND_URL = 'http://localhost:5000/api/assessments';
+const BACKEND_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 export type SyncStatus = 'idle' | 'syncing' | 'synced' | 'failed';
 type StatusListener = (status: SyncStatus) => void;
