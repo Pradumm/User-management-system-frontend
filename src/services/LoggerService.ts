@@ -59,7 +59,7 @@ export const syncLogs = async () => {
   setSyncStatus('syncing');
   
   try {
-    const response = await fetch(`${BACKEND_URL}/sync`, {
+    const response = await fetch(`${BACKEND_URL}/assessments/sync`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ attemptId, logs })
@@ -94,7 +94,7 @@ export const logEvent = (type: EventType, metadata: any = {}, questionId?: strin
 export const submitAssessment = async (answers: any) => {
   setSyncStatus('syncing');
   try {
-    const response = await fetch(`${BACKEND_URL}/submit`, {
+    const response = await fetch(`${BACKEND_URL}/assessments/submit`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ attemptId, answers, logs })
